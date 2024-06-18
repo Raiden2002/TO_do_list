@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!-- Button trigger modal -->
+<div class="his" >
+    <ul class="list-group" id="list2">
+        <li class="list-group-item"  style="display: flex;justify-content: space-between;"><p>HISTORY OF LIST</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Clear all <i class="fa fa-trash"></i>
+                  </button>
+                <button type="submit" class="btn " ></button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-dialog modal-sm">
+                    DO U WANT TO CLEAR ALL 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">DELETE</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </form>    
+        </li>
+    
+<!-- Button trigger modal -->        
+  
+  <!-- Modal -->
+
+
+
+        {% for d in data %}
+        <li class="list-group-item list-group-item-secondary" id="list">
+            <p>{{d.new_task}}</p>
+          
+                {% csrf_token %}
+              <a href="{% url 'delete' d.id %}"><button class="btn"><i class="fa fa-trash" ></i></button></a>
+          
+           
+                                
+        </li>
+    {% endfor %}
+      </ul>
+</div>
+
+
+{% endblock %}
